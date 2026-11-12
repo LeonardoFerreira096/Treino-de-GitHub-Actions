@@ -72,3 +72,4 @@ git push -u origin main
 ```
 
 A aba Actions do repositório sugere o modelo **Node.js**. Esse arquivo é o ponto de partida do exercício.
+# Treino-de-GitHub-Actions
