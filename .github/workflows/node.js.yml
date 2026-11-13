@@ -10,7 +10,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  unit:
 
     runs-on: ubuntu-latest
 
@@ -21,11 +21,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Testando o servidor com teste unitaio ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+        cache-dependency-path: /backend/package-lock.json
+    - name: Instalacao do Back
+      working-directory: backend    
+      run: npm ci 
+    - name: Testes Unitarios
+      working-directory: backend 
+      run: npm run teste:unit
+    
